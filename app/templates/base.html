@@ -25,7 +25,39 @@
             js.src = "//connect.facebook.net/en_US/all.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+
+        document.getElementById('logout').onclick = function() {
+                FB.logout(function(response) { });
+            };
     </script>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li>{{ message }} </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- HEADER -->
+    <div>
+        <h1>PyThreads</h1>
+    </div>
+        <a href="/" id="home">Home</a>
+        {% if user %}
+        <!-- <p style="background-image: url(https://graph.facebook.com/{{ user['id'] }}/picture?type=large);
+                  margin-left: auto;
+                  margin-right: auto;">
+        </p> -->
+        Hello, <a href="{{ url_for('user', name=g.user.name) }}">{{ user['name'] }}</a>.
+        <a href="/logout" id="logout">Log out</a>
+        {% else %}
+        <a href="/login" id="login" class="fb-login-button" data-size='large' data-scope="public_profile">Log in</a>
+        {% endif %}
+
+    <hr>
+
 
     <div class="container">
         {% block content %} {% endblock %}

@@ -1,26 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 	<div>
-		<h1>PyThreads</h1>
-	</div>
-		<a href="/" id="home">Home</a>
-		{% if user %}
-	    <!-- <p style="background-image: url(https://graph.facebook.com/{{ user['id'] }}/picture?type=large);
-	              margin-left: auto;
-	              margin-right: auto;">
-	    </p> -->
-	    <span>Hello, {{ user['name'] }}.</span>
-	    <a href="/logout" id="logout">Log out</a>
-	    <script>
-	        document.getElementById('logout').onclick = function() {
-	            FB.logout(function(response) { });
-	        };
-	    </script>
-	    {% else %}
-	    <a href="/login" id="login" class="fb-login-button" data-size='large' data-scope="public_profile">Log in</a>
-	    {% endif %}
-	<hr>
-	<div>
 		<h2>Topics</h2>
 		<ul>
 			<li><a href="#">News</a></li>
