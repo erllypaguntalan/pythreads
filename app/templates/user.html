@@ -2,13 +2,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>User: {{ user.name }}!</h1>
-
+    <table>
+        <tr valign="top">
+            <td><img src="http://graph.facebook.com/{{ user.id }}/picture?type=normal"></td>
+            <td>
+                <h1>Name: {{ user.name }}</h1>
+                <h3>Nickname: {{ user.nickname }}</h3>
+                {% if user.id == g.user.id %}<p><a href="">Edit</a></p>{% endif %}
+            </td>
+        </tr>
+    </table>
     <hr>
-
     {% for post in posts %}
-        <p>
-        {{ post.author.nickname }} says: <b>{{ post.body }}</b>
-        </p>
+    <table>
+        <tr valign="top">
+            <td><img src="http://graph.facebook.com/{{ user.id }}/picture?type=small"></td><td><i>{{ post.author.nickname }} says:</i><br>{{ post.body }}</td></tr>
+    </table>
     {% endfor %}
 {% endblock %}
